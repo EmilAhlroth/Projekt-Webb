@@ -1,5 +1,22 @@
 
 .top-margin{
-  margin-top: 5vh;
+  margin-top: 3vh;
 
+}
+
+#bottomButton{
+  margin-top: 1vh;
+  width: 100vw;
+  height: 5vh;
+  align-items: center;
+}
+
+#btmBtnRight{
+  height: 5vh;
+  margin-left: 2vw;
+}
+
+#btmBtnLeft{
+  margin-left: 46vw;
+  height: 5vh;
 }
