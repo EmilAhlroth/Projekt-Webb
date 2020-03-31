@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const data = require('./read.js') // LÄNK TILL FIL SOM LÄSER IN VÄRDERNA FRÅN TABELLEN
 
-var num = 1;
+var num = 0;
 
 // Set storage engine
 const storage = multer.diskStorage({
@@ -23,6 +23,7 @@ const upload = multer({
 
 const app = express();
 app.use('/static', express.static ('public'));
+
 /* Index.ejs anslutes till servern och blir indexsidan */
 app.get("/",function(req, res){
   res.render(__dirname + "/index.ejs",{
@@ -30,10 +31,11 @@ app.get("/",function(req, res){
   });
 });
 
+
 // Tar emot POST request från hemsidan
 app.post('/img', (req, res) => {
   upload(req, res, (err) => {
-    // Bilden har lagts till i img-folder
+    // Bilden har lagts till i /public/img
 
       // Lägger in bilderna till databasen
       var bld = "./static/img/" + req.file.filename
@@ -48,15 +50,16 @@ app.post('/img', (req, res) => {
       con.connect(function(err) {
       if (err) throw err;
 
+      // Lägger in id och bildsökvägen till tabellen
       var sql = "INSERT INTO bild (Id, source) VALUES ?";
-      var values = [['0', bld]];
+      var values = [[num, bld]];
 
       con.query(sql, [values], function (err, result) {
         if (err) throw err;
         });
       });
 
-      num = num + 1
+      res.redirect('back');
   });
 });
 

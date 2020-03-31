@@ -6,7 +6,7 @@ password: "",
 database: "bilder"
 });
 
-// Skapar en tabell som innehåller namn, julklappen och länken till den.
+// Skapar en tabell som innehåller bilderna
 con.connect(function(err) {
 if (err) throw err;
 console.log("Anslutningen Lyckades!");
