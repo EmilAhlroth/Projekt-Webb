@@ -2,6 +2,7 @@ Projektet fungerar inte helt enligt planering
 
 Det går inte att lägga in fler bilder än 8
 Det går inte att byta "sida" så att det går att se fler bilder än 8
+Ifall lägg-in knappen trycks utan att ha lagt in en bild slutar programmet att fungera
 
 För att programmet ska fungera måste du köra filerna minst 1 gång i denna ordning:
 

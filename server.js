@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const data = require('./read.js') // LÄNK TILL FIL SOM LÄSER IN VÄRDERNA FRÅN TABELLEN
 
+// Nummer som bilderna och ID tar för att ha olika nummer från varandra
 var num = 1;
 
 // Set storage engine
@@ -35,7 +36,7 @@ app.get("/",function(req, res){
 // Tar emot POST request från hemsidan
 app.post('/img', (req, res) => {
   upload(req, res, (err) => {
-    // Bilden har lagts till i /public/img
+    // Bilden har nu lagts till i /public/img
 
       // Lägger in bilderna till databasen
 
@@ -47,6 +48,7 @@ app.post('/img', (req, res) => {
         database: "bilder"
       });
 
+      // Bilderna byter ut värderna i phpMyAdmin och gör så att säkvägen alltid stämmer
       con.connect(function(err) {
         if (err) throw err;
         var sql = "UPDATE bild SET source = 'bld' WHERE id = 'num'";
@@ -57,7 +59,7 @@ app.post('/img', (req, res) => {
       });
 
 
-
+      // Refreshar sidan så att användaren ser att deras bild lagts in
       res.redirect('back');
   });
 });

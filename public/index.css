@@ -1,9 +1,9 @@
 
 .top-margin{
   margin-top: 3vh;
-
 }
 
+/* Css till div där båda knapparna är inkluderade */
 #bottomButton{
   margin-top: 1vh;
   width: 100vw;
@@ -11,25 +11,27 @@
   align-items: center;
 }
 
+/* Css till högerknappen */
 #btmBtnRight{
   height: 5vh;
   margin-left: 2vw;
 }
 
+/* Css till vänsterknappen */
 #btmBtnLeft{
   margin-left: 46vw;
   height: 5vh;
 }
-
+/* Klass som skapar storleken för bildrutorna */
 .bildRuta{
   height: 265px;
 }
-
+/* gör så att bildraderna är lika stora */
 #bildRader{
   width: 100vw;
   height: 76vh;
 }
-
+/* Maxstorleken på bilderna */
 .img-max {
   max-width: 230px;
   width:100%;
