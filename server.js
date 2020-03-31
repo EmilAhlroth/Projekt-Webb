@@ -59,6 +59,7 @@ app.post('/img', (req, res) => {
         });
       });
 
+      num = num + 1;
       res.redirect('back');
   });
 });
