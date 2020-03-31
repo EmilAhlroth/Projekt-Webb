@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const data = require('./read.js') // LÄNK TILL FIL SOM LÄSER IN VÄRDERNA FRÅN TABELLEN
 
-var num = 0;
+var num = 1;
 
 // Set storage engine
 const storage = multer.diskStorage({
@@ -38,28 +38,26 @@ app.post('/img', (req, res) => {
     // Bilden har lagts till i /public/img
 
       // Lägger in bilderna till databasen
+
       var bld = "./static/img/" + req.file.filename
       var con = mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
-      database: "bilder"
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "bilder"
       });
 
-      /* Lägger in alla värden i tabellen på phpMyAdmin */
       con.connect(function(err) {
-      if (err) throw err;
-
-      // Lägger in id och bildsökvägen till tabellen
-      var sql = "INSERT INTO bild (Id, source) VALUES ?";
-      var values = [[num, bld]];
-
-      con.query(sql, [values], function (err, result) {
         if (err) throw err;
+        var sql = "UPDATE bild SET source = 'bld' WHERE id = 'num'";
+        con.query(sql, function (err, result) {
+          if (err) throw err;
+          num = num + 1;
         });
       });
 
-      num = num + 1;
+
+
       res.redirect('back');
   });
 });
